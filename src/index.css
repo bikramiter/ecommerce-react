@@ -1,0 +1,127 @@
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: #a048dc;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Styling */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Cart Icon Styling */
+.cart-icon {
+  font-size: 30px; /* Size of the cart icon */
+  cursor: pointer; /* Shows a pointer when hovering */
+  position: relative; /* Position relative to the header */
+}
+
+.cart-icon i {
+  color: #fff; /* Icon color */
+}
+
+.cart-icon:hover i {
+  color: orange; /* Change color on hover for a nice effect */
+}
+
+/* Optional: If you want to display a cart counter, add a badge */
+.cart-icon::after {
+  content: "3"; /* Example item count */
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  background-color: greenyellow; /* Tomato color for badge */
+  color: #333;
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-size: 14px;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Product.css */
+.product {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Fixed height */
+}
+
+.product-image-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 200px; /* Fixed height for the image container */
+  overflow: hidden; /* Ensure any overflow is hidden */
+}
+
+.product-image {
+  width: 100%;
+  max-height: 250px; /* Cover the entire container */
+  object-fit: contain; /* Make sure the image is contained without distortion */
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-category {
+  color: #555;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.product-price {
+  font-size: 16px;
+  color: green;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.product-rating {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.footer {
+  background-color: #a048dc;
+  color: white;
+  text-align: center;
+}
