@@ -9,16 +9,19 @@ export default function Products() {
     const fetchProducts = async () => {
       const data = await getProducts();
       setProducts(data);
-      console.log(data);
     };
     fetchProducts();
   }, []);
 
   return (
-    <>
-      {products.map((product) => (
-        <Product key={product.id} product={product} />
-      ))}
-    </>
+    <div className="container">
+      <main className="main">
+        <div className="product-grid">
+          {products.map((product) => (
+            <Product key={product.id} product={product} />
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }
