@@ -16,6 +16,9 @@ export default function Product({ product }) {
           {product.rating.rate} ({product.rating.count} reviews)
         </div>
       </Link>
+      <button className="add-to-cart-btn">
+        <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+      </button>
     </div>
   );
 }
