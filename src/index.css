@@ -141,24 +141,3 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #f9f9ff;
 }
-
-.add-to-cart-btn {
-  top: 10px;
-  right: 10px;
-  background-color: white;
-  color: #a048dc; /* Violet color for the icon */
-  border: 1px solid #a048dc;
-  width: 35px;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
-}
-
-.add-to-cart-btn:hover {
-  background-color: #a048dc; /* Violet background on hover */
-  color: white; /* White icon on hover */
-}
