@@ -22,6 +22,7 @@ export default function ProductDetail() {
       <img className="product-image" src={product.image} alt={product.title} />
       <p className="product-description">{product.description}</p>
       <p className="product-price">Price: ${product.price}</p>
+      <button>Add to Cart</button>
     </div>
   );
 }
