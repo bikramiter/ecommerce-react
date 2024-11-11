@@ -7,21 +7,17 @@ export default function Products() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const data = await getProducts();
-      setProducts(data);
+      const products = await getProducts();
+      setProducts(products);
     };
     fetchProducts();
   }, []);
 
   return (
-    <div className="container">
-      <main className="main">
-        <div className="product-grid">
-          {products.map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
-        </div>
-      </main>
+    <div className="product-grid">
+      {products.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
     </div>
   );
 }
