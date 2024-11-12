@@ -13,8 +13,19 @@ export default function ProductDetail() {
       const product = await getProduct(id);
       setProduct(product);
 
-      // Check if the product is already in the cart for Add to Cart button text setting
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      // Retrieve and validate cart data from localStorage
+      let cart;
+      try {
+        cart = JSON.parse(localStorage.getItem("cart"));
+        if (!Array.isArray(cart)) {
+          throw new Error("Cart data is not an array");
+        }
+      } catch (error) {
+        // If JSON parsing fails or cart is not an array, initialize as an empty array
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart)); // Update localStorage to prevent future errors
+      }
+
       const existingProduct = cart.find((item) => item.id === Number(id));
       if (existingProduct) {
         setCartButtonText("Go to Cart");

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import CartItem from "../components/CartItem";
 
 export default function Cart() {
@@ -12,10 +11,22 @@ export default function Cart() {
     }
   }, []);
 
-  function handleCartItemRemove(id) {
-    const updatedCart = cartItems.filter((item) => item.id !== id);
+  // Function to update localStorage and cartItems state
+  function updateCart(updatedCart) {
     setCartItems(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+  }
+
+  function handleCartItemRemove(id) {
+    const updatedCart = cartItems.filter((item) => item.id !== id);
+    updateCart(updatedCart); // Using updateCart to update both state and localStorage
+  }
+
+  function handleQuantityChange(id, newQuantity) {
+    const updatedCart = cartItems.map((item) =>
+      item.id === id ? { ...item, quantity: newQuantity } : item
+    );
+    updateCart(updatedCart); // Using updateCart to update both state and localStorage
   }
 
   return (
@@ -26,7 +37,8 @@ export default function Cart() {
             <CartItem
               key={cartItem.id}
               item={cartItem}
-              onCartItemRemove={() => handleCartItemRemove(cartItem.id)}
+              onCartItemRemove={handleCartItemRemove}
+              onQuantityChange={handleQuantityChange}
             />
           ))
         : "Your cart is empty"}
