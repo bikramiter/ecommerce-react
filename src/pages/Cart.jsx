@@ -1,21 +1,9 @@
 import { useState, useEffect } from "react";
+import { useCart } from "../context/CartContext";
 import CartItem from "../components/CartItem";
 
 export default function Cart() {
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart"));
-    if (savedCart) {
-      setCartItems(savedCart);
-    }
-  }, []);
-
-  // Function to update localStorage and cartItems state
-  function updateCart(updatedCart) {
-    setCartItems(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  }
+  const { cartItems, updateCart } = useCart();
 
   function handleCartItemRemove(id) {
     const updatedCart = cartItems.filter((item) => item.id !== id);

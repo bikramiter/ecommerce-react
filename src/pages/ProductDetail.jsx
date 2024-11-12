@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import { getProduct } from "../api";
 
 export default function ProductDetail() {
@@ -8,31 +9,20 @@ export default function ProductDetail() {
   const [product, setProduct] = useState(null);
   const [cartButtonText, setCartButtonText] = useState("Add to Cart");
 
+  const { cartItems, updateCart } = useCart();
+
   useEffect(() => {
     const fetchProduct = async () => {
       const product = await getProduct(id);
       setProduct(product);
 
-      // Retrieve and validate cart data from localStorage
-      let cart;
-      try {
-        cart = JSON.parse(localStorage.getItem("cart"));
-        if (!Array.isArray(cart)) {
-          throw new Error("Cart data is not an array");
-        }
-      } catch (error) {
-        // If JSON parsing fails or cart is not an array, initialize as an empty array
-        cart = [];
-        localStorage.setItem("cart", JSON.stringify(cart)); // Update localStorage to prevent future errors
-      }
-
-      const existingProduct = cart.find((item) => item.id === Number(id));
+      const existingProduct = cartItems.find((item) => item.id === Number(id));
       if (existingProduct) {
         setCartButtonText("Go to Cart");
       }
     };
     fetchProduct();
-  }, [id]);
+  }, [id, cartItems]);
 
   function handleAddToCart() {
     if (cartButtonText === "Go to Cart") {
@@ -40,9 +30,8 @@ export default function ProductDetail() {
       return;
     }
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    cart.push({ ...product, quantity: 1 });
-    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCart([...cartItems, { ...product, quantity: 1 }]);
+
     setCartButtonText("Go to Cart");
   }
 
