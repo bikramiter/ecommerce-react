@@ -1,6 +1,6 @@
 # Basic E-Commerce React Application
 
-This project is a basic e-commerce application built with React. It includes product listings, a product detail page, a shopping cart with item quantity management, and global state management using React Context. This application was developed as a learning exercise to understand and apply core React concepts.
+This project is a basic e-commerce application built with React. It includes product listings, a product detail page, a shopping cart with item quantity management, and global state management using React Context. I developed this application as a learning exercise to understand and apply core React concepts.
 
 ## Features
 
