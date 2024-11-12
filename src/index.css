@@ -41,7 +41,7 @@ body {
 }
 
 .cart-icon:hover i {
-  color: orange; /* Change color on hover for a nice effect */
+  color: #f2b241; /* Change color on hover for a nice effect */
 }
 
 /* Optional: If you want to display a cart counter, add a badge */
@@ -199,4 +199,35 @@ body {
 
 .remove-item:hover {
   background-color: #c82333; /* Darker red on hover */
+}
+
+.cart-summary-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns content to the right */
+}
+
+.cart-summary {
+  background-color: #f9f9f9;
+}
+
+.cart-summary h3 {
+  margin-bottom: 10px;
+}
+
+.cart-summary p {
+  font-size: 16px;
+}
+
+.cart-summary button {
+  padding: 10px 20px;
+  background-color: #f2b241;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.cart-summary button:hover {
+  background-color: #e1a230;
 }
