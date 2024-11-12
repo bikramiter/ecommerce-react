@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getProduct } from "../api";
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [cartButtonText, setCartButtonText] = useState("Add to Cart");
 
@@ -11,20 +12,27 @@ export default function ProductDetail() {
     const fetchProduct = async () => {
       const product = await getProduct(id);
       setProduct(product);
+
+      // Check if the product is already in the cart for Add to Cart button text setting
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existingProduct = cart.find((item) => item.id === Number(id));
+      if (existingProduct) {
+        setCartButtonText("Go to Cart");
+      }
     };
     fetchProduct();
   }, [id]);
 
   function handleAddToCart() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProductIndex = cart.find((item) => item.id === id);
-    if (existingProductIndex > -1) {
-      setCartButtonText("Go to Cart");
-    } else {
-      cart.push({ ...product, quantity: 1 });
-      setCartButtonText("Add to Cart");
+    if (cartButtonText === "Go to Cart") {
+      navigate("/cart");
+      return;
     }
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ ...product, quantity: 1 });
     localStorage.setItem("cart", JSON.stringify(cart));
+    setCartButtonText("Go to Cart");
   }
 
   if (!product) return <div>Loading...</div>;
