@@ -1,8 +1,20 @@
-# React + Vite
+# Basic E-Commerce React Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a basic e-commerce application built with React. It includes product listings, a product detail page, a shopping cart with item quantity management, and global state management using React Context. This application was developed as a learning exercise to understand and apply core React concepts.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Product Listings**: Displays a list of products with images, descriptions, and prices.
+- **Product Detail Page**: Provides detailed information on a selected product and an option to add it to the cart.
+- **Shopping Cart**: Displays items added to the cart with functionality to update item quantities.
+- **Persistent Cart**: Stores cart data in `localStorage` to preserve items across page reloads.
+- **Routing**: Implements navigation between pages using `react-router-dom`.
+- **Global State Management**: Manages cart state globally using Context API.
+
+## Technologies Used
+
+- **React** (v18.3.12): Front-end framework.
+- **React Router**: Manages navigation between pages.
+- **Context API**: Handles global cart state.
+- **localStorage**: Persists cart data across sessions.
+
